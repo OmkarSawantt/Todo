@@ -1,8 +1,9 @@
-function Input(props) {
+function Input({label,handelChange ,value}) {
+
     return(
       <div>
-        <label >Enter {props.label}</label>
-        <input placeholder={`Enter ${props.label}`}></input>
+        <label >Enter {label}</label>
+        <input placeholder={`Enter ${label}`} onChange={(event)=>{handelChange(event)}} value={value} name={label}></input>
       </div>
     )
   }
