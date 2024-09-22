@@ -5,7 +5,8 @@ const Home = () => {
   const [data, setData] = useState({
     title: '',
     description: '',
-    id: ''
+    id: '',
+    completed:''
   });
   const [allTodo, setAllTodo] = useState([]);
 
@@ -20,7 +21,7 @@ const Home = () => {
     };
     createTodo(body).then((res) => {
       console.log('response:', res);
-      fetchTodo(); // Fetch updated todos after creating a new one
+      fetchTodo();
     }).catch((err) => {
       console.log(err);
     });
@@ -62,21 +63,21 @@ const Home = () => {
   return (
     <div>
       <label>Title</label>
-      <input 
-        type='text' 
-        name="title" 
-        placeholder='title' 
-        onChange={handelChange} 
-        value={data.title} 
+      <input
+        type='text'
+        name="title"
+        placeholder='title'
+        onChange={handelChange}
+        value={data.title}
       />
       <br />
       <label>Description</label>
-      <input 
-        type='text' 
-        name="description" 
-        placeholder='description' 
-        onChange={handelChange} 
-        value={data.description} 
+      <input
+        type='text'
+        name="description"
+        placeholder='description'
+        onChange={handelChange}
+        value={data.description}
       />
       <br />
       <button onClick={handelSubmit}>Submit</button>
@@ -88,8 +89,8 @@ const Home = () => {
             <li key={ele._id}>
               <p>Title: {ele.title}</p>
               <p>Description: {ele.description}</p>
-              <button onClick={() => handelValue(ele)}>Update</button> 
-              <button onClick={() => handelDelete(ele)}>Delete</button> 
+              <button onClick={() => handelValue(ele)}>Update</button>
+              <button onClick={() => handelDelete(ele)}>Delete</button>
 
             </li>
           ))

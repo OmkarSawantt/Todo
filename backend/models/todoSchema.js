@@ -8,6 +8,10 @@ const todoSchema=new mongoose.Schema({
     description:{
         required:false,
         type:String
+    },
+    completed:{
+        type:Boolean,
+        default: false
     }
 })
 module.exports=mongoose.model("ToDo",todoSchema)

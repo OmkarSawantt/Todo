@@ -56,3 +56,16 @@ export const delTodo=(id)=>{
         return err
     })
 }
+export const toggleTodoCompleted=(id)=>{
+    return fetch(`${ENDPOINT_URL}/${id}`,{
+        method:'PATCH',
+        headers:{
+             Accept:'application/json',
+            'Content-type':'application/json'
+        },
+    }).then((res)=>{
+        return res.json()
+    }).catch((err)=>{
+        return err
+    })
+}

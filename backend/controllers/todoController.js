@@ -70,6 +70,31 @@ exports.updTodo=async(req,res)=>{
             success:false,
             error:error
         })
-        
+
+    }
+}
+exports.toggleTodoCompleted=async(req,res)=>{
+    try {
+        const todoId = req.params.id;
+        const todo = await ToDo.findById(todoId);
+        if (!todo) {
+            return res.statusjson({
+                success:false,
+                message: 'Todo not found'
+            });
+        }
+        todo.completed = !todo.completed;
+
+        const updatedTodo = await todo.save();
+
+        res.json({
+            success:true,
+            data:updatedTodo
+        })
+    } catch (error) {
+        res.json({
+            success:false,
+            error:error
+        })
     }
 }
